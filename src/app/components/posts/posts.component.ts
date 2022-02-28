@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Posts } from 'src/app/models/post.model';
-import { PostService } from 'src/app/services/post.service';
+import { PostService, Post } from 'src/app/services/post.service';
 
 @Component({
   selector: 'app-posts',
@@ -9,7 +8,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class PostsComponent implements OnInit {
 
-  posts: Posts = [];
+  posts: Post[] = [];
   toggle: boolean[] = [];
 
   constructor(public postService: PostService) {
@@ -21,7 +20,7 @@ export class PostsComponent implements OnInit {
 
   getPosts() {
 
-    this.postService.getPosts().subscribe((data: Posts) => {
+    this.postService.getPosts().subscribe((data: Post[]) => {
 
       this.posts = data;
 
