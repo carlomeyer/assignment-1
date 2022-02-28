@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { PostService, Post } from 'src/app/services/post.service';
 
 @Component({
@@ -8,26 +9,14 @@ import { PostService, Post } from 'src/app/services/post.service';
 })
 export class PostsComponent implements OnInit {
 
-  posts: Post[] = [];
+  posts$: Observable<Post[]> | undefined;
   toggle: boolean[] = [];
 
-  constructor(public postService: PostService) {
-  }
+  constructor(public postService: PostService) { }
 
   ngOnInit() {
-    this.getPosts();
-  }
-
-  getPosts() {
-
-    this.postService.getPosts().subscribe((data: Post[]) => {
-
-      this.posts = data;
-
-    }, error => {
-      console.log(error);
-    });
-
+    this.postService.init();
+    this.posts$ = this.postService.getPosts();
   }
 
   togglePost(index: number) {
