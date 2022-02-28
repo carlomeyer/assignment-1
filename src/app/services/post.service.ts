@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface Post {
   id: number;
@@ -14,12 +15,10 @@ export interface Post {
 })
 export class PostService {
 
-  apiUrl = '/assets/mock-data/posts.json';
-
   constructor(private http: HttpClient) { }
 
   getPosts(): Observable<Post[]> {
-    return this.http.get<Post[]>(this.apiUrl);
+    return this.http.get<Post[]>(`${environment.api}/posts`);
   }
 
 }
