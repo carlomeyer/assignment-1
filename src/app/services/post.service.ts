@@ -18,12 +18,14 @@ export class PostService {
   private posts$ = new BehaviorSubject<Post[]>([]);
 
   constructor(private http: HttpClient) {
+    // call api when service is first initialised
     this.init();
   }
 
   init() {
 
     this.http.get<Post[]>(`${environment.api}/posts`).subscribe((posts: Post[]) => {
+      // emit the values to the subject
       this.posts$.next(posts);
     }, error => {
       console.log(error);
@@ -31,6 +33,9 @@ export class PostService {
 
   }
 
+  /**
+   * @returns array of posts stored in state
+   */
   getPosts(): Observable<Post[]> {
     return this.posts$;
   }

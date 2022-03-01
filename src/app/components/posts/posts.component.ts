@@ -15,10 +15,12 @@ export class PostsComponent implements OnInit {
   constructor(public postService: PostService) { }
 
   ngOnInit() {
+    // get posts stored in state
     this.posts$ = this.postService.getPosts();
   }
 
   togglePost(index: number) {
+    // set toggle array of indexes to true or false, based on index
     this.toggle[index] = !this.toggle[index];
   }
 
