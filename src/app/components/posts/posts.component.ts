@@ -15,7 +15,6 @@ export class PostsComponent implements OnInit {
   constructor(public postService: PostService) { }
 
   ngOnInit() {
-    this.postService.init();
     this.posts$ = this.postService.getPosts();
   }
 
