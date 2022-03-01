@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 
 export interface Post {
   id: number;
@@ -15,11 +15,11 @@ export interface Post {
 })
 export class PostService {
 
-  posts: Observable<Post[]> | undefined;
+  posts: Post[] | undefined;
 
   constructor(private http: HttpClient) { }
 
-  getPosts() {
+  getPosts(): Observable<Post[]> {
     return this.http.get<Post[]>(`${environment.api}/posts`);
   }
 
