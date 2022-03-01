@@ -15,9 +15,11 @@ export interface Post {
 })
 export class PostService {
 
+  posts: Observable<Post[]> | undefined;
+
   constructor(private http: HttpClient) { }
 
-  getPosts(): Observable<Post[]> {
+  getPosts() {
     return this.http.get<Post[]>(`${environment.api}/posts`);
   }
 

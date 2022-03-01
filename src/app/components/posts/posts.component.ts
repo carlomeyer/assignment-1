@@ -9,25 +9,12 @@ import { PostService, Post } from 'src/app/services/post.service';
 })
 export class PostsComponent implements OnInit {
 
-  posts: Post[] = [];
   toggle: boolean[] = [];
 
   constructor(public postService: PostService) { }
 
   ngOnInit() {
-    this.getPosts();
-  }
-
-  getPosts() {
-
-    this.postService.getPosts().subscribe((data: Post[]) => {
-
-      this.posts = data;
-
-    }, error => {
-      console.log(error);
-    });
-
+    this.postService.posts = this.postService.getPosts();
   }
 
   togglePost(index: number) {
