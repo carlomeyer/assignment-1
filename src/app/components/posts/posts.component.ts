@@ -13,6 +13,7 @@ export class PostsComponent implements OnInit {
   constructor(public postService: PostService) { }
 
   ngOnInit() {
+    // get posts from api
     this.getPosts();
   }
 
@@ -20,6 +21,7 @@ export class PostsComponent implements OnInit {
 
     this.postService.getPosts().subscribe((data: Post[]) => {
 
+      // set results in service variable
       this.postService.posts = data;
 
     }, error => {
@@ -29,6 +31,7 @@ export class PostsComponent implements OnInit {
   }
 
   togglePost(index: number) {
+    // set toggle array of indexes to true or false, based on index
     this.toggle[index] = !this.toggle[index];
   }
 
