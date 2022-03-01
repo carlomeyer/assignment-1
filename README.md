@@ -1,6 +1,6 @@
 # Angular Assignment
 
-This is a test project to demonstrate fetching data from the jsonplaceholder API, displaying the results 10 columns by 10 rows and having a toggle on ids when clicking on a square.
+This is a test project to demonstrate fetching data from the jsonplaceholder API, displaying the results 10 columns by 10 rows and having a toggle on ids when clicking on a square. Material Design was used to display html elements.
 
 ## Get started
 
@@ -13,13 +13,13 @@ cd assignment-1
 
 ### Branches
 
-Shared State without RxJS
+Stateless RxJS
 
 ```shell
 git checkout master
 ```
 
-Shared State with RxJS
+Stateful with RxJS
 
 ```shell
 git checkout develop
@@ -43,5 +43,4 @@ ng serve
 
 ## Packages
 
-@angular 13
-@angular/material 13
+@angular 13 | @angular/material 13
